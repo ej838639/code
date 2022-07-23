@@ -1,0 +1,7 @@
+docker build -t jsimage .
+
+docker run --rm jsimage
+
+Output:
+Area of a 2 cm radius disk:
+    12.566370614359172 cm²

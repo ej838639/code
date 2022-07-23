@@ -1,0 +1,14 @@
+docker build -t jsimage_param_3_5 .
+
+docker run --rm -e diameter=3.5 jsimage_param_3_5
+
+Output
+Area of a 1.75 cm radius disk:
+    9.62112750161874 cm²
+
+
+docker tag jsimage ej838639/jsimage_param_3_5
+
+docker login
+
+docker push ej838639/jsimage_param_3_5

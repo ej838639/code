@@ -1,0 +1,15 @@
+docker build -t jsimage_param .
+
+docker run --rm jsimage_param
+
+when ENV diameter=3
+Area of a 1.5 cm radius disk:
+    7.0685834705770345 cm²
+
+when ENV diameter=4
+Area of a 2 cm radius disk:
+    12.566370614359172 cm²
+
+docker run --rm -e diameter=5.0 jsimage_param
+Area of a 2.5 cm radius disk:
+    19.634954084936208 cm²
