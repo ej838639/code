@@ -26,7 +26,7 @@ Some of the following Python code uses Pandas libraries to post-process outputs 
 
 A SON platform automates the routine work done by Radio Frequency (RF) Engineers on a wireless communications network. The EdenNet solution has built-in Python libraries and T-Mobile built many custom libraries to create custom modules to meet business requirements.
 
-**[CCO](https://github.com/ej838639/code/blob/main/automation/cco/cco.py "CCO python code")**: Identify the cells that had a significant change in timing advance and find the associated RET. Source data: Outputs from the Coordinated Coverage and Capacity Optimization (C-CCO) SON module. 
+**[CCO](https://github.com/ej838639/code/blob/main/automation/cco/cco.py "CCO python code")**: Identify the cells that had a significant change in timing advance and find the associated RET. Source data: Outputs from the Coordinated Coverage and Capacity Optimization (C-CCO) SON module.
 
 **[Before and After Cell](https://github.com/ej838639/code/blob/main/automation/before_after_cell/Before%20After%20Cell%20-%20Nokia.py "Before and After Cell python code")**: Before and After (aka Pre/Post) Analysis: Determine if there is a significant change in KPIs related to a network change (Ex: Downtilt). Source data: Daily KPI results from the performance management tool.
 
@@ -35,5 +35,7 @@ A SON platform automates the routine work done by Radio Frequency (RF) Engineers
 ## DevOps Learning journey
 
 Projects to learn DevOps tools.
+
+**[Docker](https://github.com/ej838639/code/tree/main/docker "Docker projects folder")**: Docker code from projects the Educative's "DevOps for Developers: Docker for Developers: Module 3".
 
 **[Terraform](https://github.com/ej838639/code/tree/main/terraform "Terraform projects folder")**: Terraform code from projects the Educative's "DevOps for Developers: Terraform: From Beginner to Master with Examples in AWS: Module 9".
