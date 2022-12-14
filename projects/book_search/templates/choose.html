@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Find a book {% endblock %}</h1>
+    <h3>Enter a Title and/or Authors. Or enter an ISBN.</h3>
+    <h4>Then hit enter or click submit. Title is not case sensitive, authors is case sensitive, and ISBN must be the full number.</h4>
+    <form method="post">
+        <p>
+            <label for="title">Title</label>
+            <input type="text" name="title"
+                   placeholder="Enter any word">
+            </input>
+        </p>
+
+        <p>
+            <label for="authors">Authors</label>
+            <input type="text" name="authors"
+                   placeholder="Enter any author name">
+            </input>
+        </p>
+
+        <p>
+            <label for="isbn">ISBN</label>
+            <input type="text" name="isbn"
+                   placeholder="Enter complete ISBN">
+            </input>
+        </p>
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+{% endblock %}
