@@ -3,11 +3,9 @@ WORKDIR /usr/src/book_search
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY server/ server/
-ENV POSTGRES_URL=host.docker.internal
 ENV POSTGRES_PORT=5432
 ENV POSTGRES_DB=oreilly
 ENV POSTGRES_USER=oreilly
-ENV FLASK_ENV=development
 ENV FLASK_APP=server/app
 ENV PORT=5000
 EXPOSE 5000

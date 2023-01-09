@@ -10,10 +10,9 @@ http://localhost:5000/book_search/choose
 import os
 import psycopg2
 from flask import Flask, render_template, request, url_for, redirect
-from flask_restx import Api
+import functools
 
 app = Flask(__name__)
-api = Api(app)
 
 
 def get_db_connection():
@@ -24,6 +23,17 @@ def get_db_connection():
                             password=os.environ['POSTGRES_PW'])
     return conn
 
+
+def config_db(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        conn = get_db_connection()
+        cur = conn.cursor()
+        res = func(cur, *args, **kwargs)
+        cur.close()
+        conn.close()
+        return res
+    return wrapper
 
 @app.route('/book_search/choose', methods=('GET', 'POST'))
 def choose():
@@ -38,19 +48,17 @@ def choose():
 
 
 @app.route('/book_search/all')
-def all_get():
-    conn, cur = connect_db()
+@config_db
+def all_get(cur):
     cur.execute('select * from works')
     works = cur.fetchall()
-    close_db(conn, cur)
 
     return render_template('index.html', books=works)
 
 
 @app.route('/book_search/search_result/')
-def search_get():
-    conn, cur = connect_db()
-
+@config_db
+def search_get(cur):
     title = request.args['title']
     authors = request.args['authors']
     isbn = request.args['isbn']
@@ -66,24 +74,10 @@ def search_get():
 
     try:
         works = cur.fetchall()
-        close_db(conn, cur)
         if works:
             return render_template('index.html', books=works)
         else:
             return render_template('no_result.html')
 
     except:
-        close_db(conn, cur)
         return render_template('error.html')
-
-
-def connect_db():
-    conn = get_db_connection()
-    cur = conn.cursor()
-    return conn, cur
-
-
-def close_db(conn, cur):
-    cur.close()
-    conn.close()
-    return
